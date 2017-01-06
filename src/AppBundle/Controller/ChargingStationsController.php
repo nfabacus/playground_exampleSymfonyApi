@@ -76,18 +76,21 @@ class ChargingStationsController extends Controller
         $data['id'] = $station->getId();
         $data['name'] = $station->getName();
 
-        $data['pumps'] = [];
+        $data['pumpId'] = [];
         $pumps = $station->getPumps();
 
         /** @var Pump $pump */
         foreach ($pumps as $pump) {
-            $pumpData = [];
+//            $pumpData = [];
 
-            $pumpData['id'] = $pump->getId();
-            $pumpData['name'] = $pump->getName();
-            $pumpData['type'] = $pump->getType();
+//            $pumpData['id'] = $pump->getId();
+//            $pumpData['name'] = $pump->getName();
+//            $pumpData['type'] = $pump->getType();
 
-            $data['pumps'][] = $pumpData;
+            $pumpId = $pump->getId();
+            $data['pumpId'][]=$pumpId;
+
+//            $data['pumps'][] = $pumpData;
         }
 
         return new JsonResponse($data);
